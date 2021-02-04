@@ -3,20 +3,18 @@ on: pull_request
 jobs:
   example_comment_pr:
     runs-on: ubuntu-latest
+
+    if: contains(['m-kus', 'aopoltorzhicky'], github.actor) == false
+
     name: An example job to comment a PR
     steps:
       - name: Checkout
         uses: actions/checkout@v1
 
-      - name: Print GitHub context
-        run: echo "$GITHUB_CONTEXT"
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-
       - name: Comment PR with dynamic message
-        uses: ./
+        uses: thollander/actions-comment-pull-request@master
         with:
           message:
             "Dynamic message : your current branch is ${{ github.head_ref }}.
-            Check [Contexts and expression syntax](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/contexts-and-expression-syntax-for-github-actions) available variables."
+            Check [Readme.md](https://github.com/RomanSerikov/gh-action-pr-test/blob/master/README.md) as fast as you can."
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
