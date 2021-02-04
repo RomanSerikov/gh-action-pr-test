@@ -17,3 +17,7 @@ jobs:
           message: "Dynamic message.
             Check [Readme.md](https://github.com/RomanSerikov/gh-action-pr-test/blob/master/README.md) as fast as you can."
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/labeler@main
+        with:
+          repo-token: "${{ secrets.GITHUB_TOKEN }}"
