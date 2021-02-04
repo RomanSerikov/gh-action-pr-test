@@ -4,7 +4,7 @@ jobs:
   example_comment_pr:
     runs-on: ubuntu-latest
 
-    if: contains(['m-kus', 'aopoltorzhicky'], github.actor) == false
+    if: contains(fromJson('["m-kus", "aopoltorzhicky"]'), github.actor) == false
 
     name: An example job to comment a PR
     steps:
