@@ -4,7 +4,7 @@ jobs:
   example_comment_pr:
     runs-on: ubuntu-latest
 
-    if: contains(fromJson('["m-kus", "aopoltorzhicky"]'), github.actor) == false
+    if: contains(['m-kus', 'aopoltorzhicky'], github.actor) == false
 
     name: An example job to comment a PR
     steps:
@@ -14,7 +14,6 @@ jobs:
       - name: Comment PR with dynamic message
         uses: thollander/actions-comment-pull-request@master
         with:
-          message:
-            "Dynamic message : your current branch is ${{ github.head_ref }}.
+          message: "Dynamic message.
             Check [Readme.md](https://github.com/RomanSerikov/gh-action-pr-test/blob/master/README.md) as fast as you can."
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
