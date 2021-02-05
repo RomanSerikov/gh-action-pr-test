@@ -11,13 +11,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
 
+      - uses: actions/labeler@main
+        with:
+          repo-token: "${{ secrets.GITHUB_TOKEN }}"
+
       - name: Comment PR with dynamic message
         uses: thollander/actions-comment-pull-request@master
         with:
           message: "Dynamic message.
             Check [Readme.md](https://github.com/RomanSerikov/gh-action-pr-test/blob/master/README.md) as fast as you can."
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - uses: actions/labeler@main
-        with:
-          repo-token: "${{ secrets.GITHUB_TOKEN }}"
